@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#!/usr/bin/env bash
+
+# Check if an argument is provided
+if [ -n "$1" ]; then
+    # Loop for pinging 5 times
+    for ((i=1; i<=5; i++)); do
+        ping -c 1 "$1" > /dev/null
+        if [ $? -eq 0 ]; then
+            echo "Ping $i: $1 is reachable"
+        else
+            echo "Ping $i: $1 is unreachable"
+        fi
+    done
+else
+    echo "Usage: $0 {IP_ADDRESS}"
+fi
